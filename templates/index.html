@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The OG Elo</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>The OG Elo</h1>
+    <p>cutu baby of egress</p>
+
+    <input id="question" placeholder="Ask me anything..." />
+    <button onclick="send()">Ask</button>
+
+    <div id="response" class="answer"></div>
+</div>
+
+<div id="emoji-zone"></div>
+
+<script>
+function send() {
+    const q = document.getElementById("question").value;
+
+    for (let i = 0; i < 25; i++) {
+        const e = document.createElement("div");
+        e.innerText = "😭";
+        e.className = "cry";
+        e.style.left = Math.random() * 100 + "vw";
+        e.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 4000);
+    }
+
+    fetch("/ask", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question: q })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("response").innerText = data.answer + " 🥲";
+    });
+}
+</script>
+
+</body>
+</html>
