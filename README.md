@@ -42,17 +42,6 @@ No real AI logic yet — this is about **architecture, not intelligence**.
 
 ---
 
-## Project Structure
-
-the_og_elo
-├── app.py
-├── templates
-│ └── index.html
-└── static
-└── style.css
-
----
-
 ## How to run locally
 
 1. Clone the repository
